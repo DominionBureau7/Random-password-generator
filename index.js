@@ -19,21 +19,20 @@ copyIcon.addEventListener("click", () => {
 
 // Function to generate random password
 function createPassword(){
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?/`~";
-    const passwordLength = 14;
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?/`~";// String containing all possible password characters
+    const passwordLength = 14;// Defines length of the generated password
 
     let password = "";
-    for (let index = 0; index < passwordLength; index++) {
-        const randomNumber = Math.floor(Math.random()* chars.length);
-        password += chars.substring(randomNumber, randomNumber + 1);
+    for (let index = 0; index < passwordLength; index++) {// Loops to generate each character of the password
+        const randomNumber = Math.floor(Math.random()* chars.length);// Generates a random index based on characters length. (.length because it cannot generate a number greater than the length of the string)
+        password += chars.substring(randomNumber, randomNumber + 1);// Appends a random character to the password.
     }
-    inputEl.value = password;
+    inputEl.value = password;// Displays generated password in input field
 }
 // Function to copy the generated password
 function copyPassword(){
-    inputEl.select();
+    inputEl.select();// Selects the text inside the input field
     inputEl.setSelectionRange(0, 9999);/*For mobile devices*/
-    navigator.clipboard.writeText(inputEl.value);
-    alertContainerEl.innerText = inputEl.value + " - copied";
-
+    navigator.clipboard.writeText(inputEl.value);// Copies the selected password to the clipboard
+    alertContainerEl.innerText = inputEl.value + " - copied";// Displays confirmation message showing the copied password
 }
